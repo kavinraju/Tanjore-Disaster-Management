@@ -5,33 +5,40 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/incident_report"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Report Incident" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/incident_history"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Incident History" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/emergency_num"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Emergency Numbers" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/safety_tips"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Safety Tips" />
+
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Account Operations">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/edit_account"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="Edit Account" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/delete_account"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Delete Account" />
+            <item
+                android:id="@+id/help"
+                android:title="Help"/>
+            <item
+                android:id="@+id/logout"
+                android:title="Logout"/>
         </menu>
     </item>
 

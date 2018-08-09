@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,16 +74,17 @@ public class ReportIncident extends AppCompatActivity {
                     // Its been added to avoid Fragment is not currently in the FragmentManager
                     .add(R.id.container_for_report_incident, mReportIncidentByGPSLocation, REPORT_BY_GPS)
                     .replace(R.id.container_for_report_incident, mReportIncidentByAddress, REPORT_BY_ADDRESS)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .addToBackStack(null)
                     .commit();
+            Toast.makeText(this, "yes", Toast.LENGTH_SHORT).show();
         }else if (currentSelectedOption.equals(REPORT_BY_GPS)){
             fragmentManager.beginTransaction()
                     .replace(R.id.container_for_report_incident, mReportIncidentByGPSLocation, REPORT_BY_GPS)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .addToBackStack(null)
                     .commit();
         }
-
-
     }
 
     @Override

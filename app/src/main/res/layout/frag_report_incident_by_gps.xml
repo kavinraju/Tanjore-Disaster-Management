@@ -1,0 +1,111 @@
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="36dp">
+
+        <Button
+            android:id="@+id/btn_place_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pick_location"
+
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linear_lyt_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_place_picker"
+            app:layout_constraintStart_toStartOf="@id/btn_place_picker"
+            app:layout_constraintEnd_toEndOf="@id/btn_place_picker">
+            <TextView
+                android:text="@string/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                style="@style/TextAppearance.AppCompat.Title"/>
+            <TextView
+                android:id="@+id/txt_view_address"
+                android:text="@string/sastra_university_thirumalaisamudram_tanjore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/spinner_incident_type"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/scrim_gradient_spinner"
+
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginTop="16dp"
+
+            app:layout_constraintTop_toBottomOf="@id/linear_lyt_address"
+            app:layout_constraintStart_toStartOf="@id/linear_lyt_address"
+            app:layout_constraintEnd_toEndOf="@id/linear_lyt_address"/>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInput_desp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+
+            android:hint="@string/description"
+            android:textColorHint="#717171"
+            app:layout_constraintTop_toBottomOf="@id/spinner_incident_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <EditText
+                android:id="@+id/editText_Desp"
+                android:layout_width="match_parent"
+                android:fontFamily="monospace"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:textColor="#000000" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/report"
+
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+
+            app:layout_constraintTop_toBottomOf="@id/textInput_desp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>

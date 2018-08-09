@@ -8,4 +8,21 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="title_activity_report_incident">ReportIncident</string>
+    <string name="create_account">Create Account</string>
+    <string name="name">Name</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="report">Report</string>
+    <string name="report_by_gps_location">Report by\nGPS Location</string>
+    <string name="report_by_address">Report by\nAddress</string>
+    <string name="pick_location">Pick Location</string>
+    <string name="address">Address</string>
+    <string name="sastra_university_thirumalaisamudram_tanjore">SASTRA UNIVERSITY Thirumalaisamudram, Tanjore.</string>
+    <string name="address_1">Address 1</string>
+    <string name="address_2">Address 2</string>
+    <string name="description">Description</string>
 </resources>

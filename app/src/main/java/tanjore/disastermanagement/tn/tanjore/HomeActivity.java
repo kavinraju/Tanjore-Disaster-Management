@@ -1,5 +1,6 @@
 package tanjore.disastermanagement.tn.tanjore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -99,13 +100,13 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.incident_report) {
-            // Handle the camera action
+            startActivity(new Intent(this,ReportIncident.class));
         } else if (id == R.id.incident_history) {
 
         } else if (id == R.id.emergency_num) {
 
         } else if (id == R.id.safety_tips) {
-
+            startActivity(new Intent(this,RegistrationActivity.class));
         } else if (id == R.id.edit_account) {
 
         } else if (id == R.id.delete_account) {

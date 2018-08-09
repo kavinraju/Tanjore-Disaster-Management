@@ -3,29 +3,40 @@ package tanjore.disastermanagement.tn.tanjore;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import tanjore.disastermanagement.tn.tanjore.Fragments.ReportIncidentByAddress;
+import tanjore.disastermanagement.tn.tanjore.Fragments.ReportIncidentByGPSLocation;
 
 public class ReportIncident extends AppCompatActivity {
 
-    private String[] district_list = { "Tanjore" , "Trichy", "Chennai" , "Madurai" };
+    @BindView(R.id.btn_report_by_address)
+    Button btn_report_by_address;
+    @BindView(R.id.btn_report_by_gps)
+    Button btn_report_by_gps_location;
 
-    private String[] taluk_list = {"Taluk 1","Taluk 2","Taluk 3","Taluk 4","Taluk 5"};
+    //Constants
+    private static String REPORT_BY_ADDRESS = "address";
+    private static String REPORT_BY_GPS = "gps";
+    private static String REPORT_BY_ADDRESS_FRAGMENT_KEY ="report_by_address_fragment";
+    private static String REPORT_BY_GPS_FRAGMENT_KEY ="report_by_gps_fragment";
+    private static String currentSelectedOption = REPORT_BY_ADDRESS;
 
-    private String[] village_list = {"Village 1","Village 2","Village 3","Village 4","Village 5"};
+    private FragmentManager fragmentManager;
+    private ReportIncidentByAddress mReportIncidentByAddress;
+    private ReportIncidentByGPSLocation mReportIncidentByGPSLocation;
 
-    @BindView(R.id.spinner_district)
-    Spinner spinnerDistrict;
-    @BindView(R.id.spinner_taluk)
-    Spinner spinnerTaluk;
-    @BindView(R.id.spinner_village)
-    Spinner spinnerVillage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +46,91 @@ public class ReportIncident extends AppCompatActivity {
         Toolbar toolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        spinnerDistrict = findViewById(R.id.spinner_district);
-        spinnerTaluk = findViewById(R.id.spinner_taluk);
-        spinnerVillage = findViewById(R.id.spinner_village);
+        if (savedInstanceState != null){
 
-        setSpinnerAdapter(district_list, spinnerDistrict);
-        setSpinnerAdapter(taluk_list, spinnerTaluk);
-        setSpinnerAdapter(village_list, spinnerVillage);
+            mReportIncidentByAddress = (ReportIncidentByAddress) getSupportFragmentManager()
+                    .getFragment(savedInstanceState, REPORT_BY_ADDRESS);
+            mReportIncidentByGPSLocation = (ReportIncidentByGPSLocation) getSupportFragmentManager()
+                    .getFragment(savedInstanceState, REPORT_BY_GPS);
+
+            if (mReportIncidentByAddress == null){
+                mReportIncidentByAddress = new ReportIncidentByAddress();
+            }
+
+            if (mReportIncidentByGPSLocation == null){
+                mReportIncidentByGPSLocation = new ReportIncidentByGPSLocation();
+            }
+
+        }else {
+            mReportIncidentByAddress = new ReportIncidentByAddress();
+            mReportIncidentByGPSLocation = new ReportIncidentByGPSLocation();
+        }
+
+        fragmentManager = getSupportFragmentManager();
+
+        if (currentSelectedOption.equals(REPORT_BY_ADDRESS)){
+            fragmentManager.beginTransaction()
+                    // Its been added to avoid Fragment is not currently in the FragmentManager
+                    .add(R.id.container_for_report_incident, mReportIncidentByGPSLocation, REPORT_BY_GPS)
+                    .replace(R.id.container_for_report_incident, mReportIncidentByAddress, REPORT_BY_ADDRESS)
+                    .addToBackStack(null)
+                    .commit();
+        }else if (currentSelectedOption.equals(REPORT_BY_GPS)){
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container_for_report_incident, mReportIncidentByGPSLocation, REPORT_BY_GPS)
+                    .addToBackStack(null)
+                    .commit();
+        }
 
 
     }
 
-    private void setSpinnerAdapter(String[] list, Spinner spinner){
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this , R.layout.spinner_list , list);
-        arrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinner.setAdapter(arrayAdapter);
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if ( getSupportFragmentManager().findFragmentByTag(REPORT_BY_ADDRESS).isAdded() ){
+            getSupportFragmentManager().putFragment(outState, REPORT_BY_ADDRESS_FRAGMENT_KEY, mReportIncidentByAddress);
+        }
+
+        if ( getSupportFragmentManager().findFragmentByTag(REPORT_BY_GPS).isAdded() ){
+            getSupportFragmentManager().putFragment(outState, REPORT_BY_GPS_FRAGMENT_KEY, mReportIncidentByGPSLocation);
+        }
+
     }
+
+    @OnClick(R.id.btn_report_by_address)
+    public void onClickReportByAddress(View view){
+
+        currentSelectedOption = REPORT_BY_ADDRESS;
+        if(fragmentManager.findFragmentByTag(REPORT_BY_ADDRESS) instanceof ReportIncidentByAddress){
+            mReportIncidentByAddress = (ReportIncidentByAddress) fragmentManager.findFragmentByTag(REPORT_BY_ADDRESS);
+        }
+
+        fragmentManager.beginTransaction()
+                .replace(R.id.container_for_report_incident, mReportIncidentByAddress, REPORT_BY_ADDRESS)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack(null)
+                .commit();
+
+        Log.d(ReportIncident.class.getSimpleName(), "onClickReportByAddress");
+    }
+
+    @OnClick(R.id.btn_report_by_gps)
+    public void onClickReportByGPS(View view){
+
+        currentSelectedOption = REPORT_BY_GPS;
+        if(fragmentManager.findFragmentByTag(REPORT_BY_GPS) instanceof ReportIncidentByGPSLocation){
+            mReportIncidentByGPSLocation = (ReportIncidentByGPSLocation) fragmentManager.findFragmentByTag(REPORT_BY_GPS);
+        }
+
+        fragmentManager.beginTransaction()
+                .replace(R.id.container_for_report_incident, mReportIncidentByGPSLocation, REPORT_BY_GPS)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack(null)
+                .commit();
+
+        Log.d(ReportIncident.class.getSimpleName(), "onClickReportByGPS");
+    }
+
+
 }

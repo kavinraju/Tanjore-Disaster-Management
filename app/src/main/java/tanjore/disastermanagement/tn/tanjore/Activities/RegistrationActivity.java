@@ -1,4 +1,4 @@
-package tanjore.disastermanagement.tn.tanjore;
+package tanjore.disastermanagement.tn.tanjore.Activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +8,8 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import tanjore.disastermanagement.tn.tanjore.R;
 
 public class RegistrationActivity extends AppCompatActivity {
 

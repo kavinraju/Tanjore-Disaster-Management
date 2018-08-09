@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import tanjore.disastermanagement.tn.tanjore.IncidentClass;
+import tanjore.disastermanagement.tn.tanjore.Objects.IncidentClass;
 import tanjore.disastermanagement.tn.tanjore.R;
 
 public class IncidentHistoryAdapter extends RecyclerView.Adapter<IncidentHistoryViewholder> {
@@ -28,8 +28,9 @@ public class IncidentHistoryAdapter extends RecyclerView.Adapter<IncidentHistory
 
     @Override
     public void onBindViewHolder(@NonNull IncidentHistoryViewholder holder, int position) {
-        holder.incidentName.setText("INCIDENT");
-        holder.timeOfreport.setText("19:15");
+        holder.incidentName.setText(data.get(position).incidentName);
+        holder.timeOfreport.setText(data.get(position).incidentTime);
+
     }
 
     @Override

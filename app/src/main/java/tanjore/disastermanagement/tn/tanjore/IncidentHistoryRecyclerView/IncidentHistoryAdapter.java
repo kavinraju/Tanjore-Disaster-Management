@@ -21,7 +21,7 @@ public class IncidentHistoryAdapter extends RecyclerView.Adapter<IncidentHistory
     @NonNull
     @Override
     public IncidentHistoryViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.incident_history_item,null,false);
+        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.incident_history_item,parent,false);
         IncidentHistoryViewholder holder = new IncidentHistoryViewholder(v);
         return holder;
     }

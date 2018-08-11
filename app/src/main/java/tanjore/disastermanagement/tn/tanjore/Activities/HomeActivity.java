@@ -21,10 +21,6 @@ public class HomeActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //NAVIGATION DRAWER AND TOOLBAR
-        Toolbar toolbar =  findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     public void buttonClicked(View v){
@@ -39,6 +35,7 @@ public class HomeActivity extends AppCompatActivity{
                 Log.d("MSG", "history");
                 break;
             case R.id.emergency_num:
+                startActivity(new Intent(this,RegistrationActivity.class));
 
                 Log.d("MSG", "emergency");
                 break;

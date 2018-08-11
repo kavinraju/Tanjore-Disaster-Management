@@ -1,6 +1,7 @@
 package tanjore.disastermanagement.tn.tanjore;
 
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -32,7 +33,7 @@ public class ReportIncident extends AppCompatActivity {
     private static String REPORT_BY_GPS = "gps";
     private static String REPORT_BY_ADDRESS_FRAGMENT_KEY ="report_by_address_fragment";
     private static String REPORT_BY_GPS_FRAGMENT_KEY ="report_by_gps_fragment";
-    private static String currentSelectedOption = REPORT_BY_ADDRESS;
+    private static String currentSelectedOption = REPORT_BY_GPS;
 
     private FragmentManager fragmentManager;
     private ReportIncidentByAddress mReportIncidentByAddress;
@@ -44,9 +45,9 @@ public class ReportIncident extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_incident);
         ButterKnife.bind(this);
-        Toolbar toolbar =  findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+//        Toolbar toolbar =  findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        toolbar.setTitle("");
         if (savedInstanceState != null){
 
             mReportIncidentByAddress = (ReportIncidentByAddress) getSupportFragmentManager()
@@ -69,22 +70,25 @@ public class ReportIncident extends AppCompatActivity {
 
         fragmentManager = getSupportFragmentManager();
 
-        if (currentSelectedOption.equals(REPORT_BY_ADDRESS)){
+        if (currentSelectedOption.equals(REPORT_BY_GPS)){
             fragmentManager.beginTransaction()
                     // Its been added to avoid Fragment is not currently in the FragmentManager
-                    .add(R.id.container_for_report_incident, mReportIncidentByGPSLocation, REPORT_BY_GPS)
-                    .replace(R.id.container_for_report_incident, mReportIncidentByAddress, REPORT_BY_ADDRESS)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .addToBackStack(null)
-                    .commit();
-            Toast.makeText(this, "yes", Toast.LENGTH_SHORT).show();
-        }else if (currentSelectedOption.equals(REPORT_BY_GPS)){
-            fragmentManager.beginTransaction()
+                    .add(R.id.container_for_report_incident, mReportIncidentByAddress, REPORT_BY_ADDRESS)
                     .replace(R.id.container_for_report_incident, mReportIncidentByGPSLocation, REPORT_BY_GPS)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .addToBackStack(null)
                     .commit();
+            btn_report_by_gps_location.setBackground(getDrawable(R.drawable.ripple_rounded_selected_btn));
+            Toast.makeText(this, "yes", Toast.LENGTH_SHORT).show();
+        }else if (currentSelectedOption.equals(REPORT_BY_ADDRESS)){
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container_for_report_incident, mReportIncidentByAddress, REPORT_BY_ADDRESS)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .addToBackStack(null)
+                    .commit();
+            btn_report_by_address.setBackground(getDrawable(R.drawable.ripple_rounded_selected_btn));
         }
+
     }
 
     @Override
@@ -114,6 +118,9 @@ public class ReportIncident extends AppCompatActivity {
                 .addToBackStack(null)
                 .commit();
 
+        btn_report_by_address.setBackground(getDrawable(R.drawable.ripple_rounded_selected_btn));
+        btn_report_by_gps_location.setBackground(getDrawable(R.drawable.ripple_rounded));
+
         Log.d(ReportIncident.class.getSimpleName(), "onClickReportByAddress");
     }
 
@@ -131,8 +138,23 @@ public class ReportIncident extends AppCompatActivity {
                 .addToBackStack(null)
                 .commit();
 
+        btn_report_by_address.setBackground(getDrawable(R.drawable.ripple_rounded));
+        btn_report_by_gps_location.setBackground(getDrawable(R.drawable.ripple_rounded_selected_btn));
+
         Log.d(ReportIncident.class.getSimpleName(), "onClickReportByGPS");
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (fragmentManager != null){
+            if (mReportIncidentByAddress != null){
+                fragmentManager.beginTransaction().remove(mReportIncidentByAddress).commit();
+            }
+            if (mReportIncidentByGPSLocation != null){
+                fragmentManager.beginTransaction().remove(mReportIncidentByGPSLocation).commit();
+            }
+        }
+        finish();
+    }
 }

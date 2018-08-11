@@ -46,11 +46,15 @@ public class ReportIncidentByAddress extends Fragment {
         spinnerTaluk = rootView.findViewById(R.id.spinner_taluk);
         spinnerVillage = rootView.findViewById(R.id.spinner_village);
 
+        return rootView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         setSpinnerAdapter(district_list, spinnerDistrict);
         setSpinnerAdapter(taluk_list, spinnerTaluk);
         setSpinnerAdapter(village_list, spinnerVillage);
-
-        return rootView;
     }
 
     private void setSpinnerAdapter(String[] list, Spinner spinner){

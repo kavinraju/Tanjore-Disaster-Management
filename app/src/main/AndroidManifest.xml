@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tanjore.disastermanagement.tn.tanjore">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,10 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".Activities.HomeActivity"
-                    android:label="Tanjore"
-                    android:theme="@style/NoActionBar">
+        <activity
+            android:name=".Activities.HomeActivity"
+            android:label="Tanjore"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,7 +31,7 @@
         <activity
             android:name=".ReportIncident"
             android:label="@string/title_activity_report_incident"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar"></activity>
         <activity
             android:name=".Activities.IncidentHistoryList"
             android:label="IncidentHistoryList"
@@ -42,6 +47,15 @@
         <activity
             android:name=".Activities.LogIn"
             android:label="@string/title_activity_log_in"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD734iwMwdjtkddvoswC5fmjTviysnzA2A" />
+
+        <activity
+            android:name=".Activities.IncidentDetails"
+            android:label="@string/title_activity_incident_details"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

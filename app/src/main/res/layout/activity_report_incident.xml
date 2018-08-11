@@ -7,20 +7,61 @@
     tools:context=".ReportIncident">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:elevation="0dp"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
+       <!-- <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay" >-->
 
+        <!--</android.support.v7.widget.Toolbar>-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_report_by_gps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClickReportByGPS"
+
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+
+                android:text="@string/report_by_gps_location"
+                android:textAllCaps="false"
+                android:lines="2"
+                android:textColor="@color/white"
+                android:background="@drawable/ripple_rounded" />
+
+            <Button
+                android:id="@+id/btn_report_by_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClickReportByAddress"
+
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+
+                android:text="@string/report_by_address"
+                android:textAllCaps="false"
+                android:lines="2"
+                android:textColor="@color/white"
+                android:background="@drawable/ripple_rounded" />
+        </LinearLayout>
     </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_report_incident" />
+    <include layout="@layout/content_report_incident"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

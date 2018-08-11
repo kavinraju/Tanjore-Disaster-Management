@@ -79,7 +79,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
         android:background="@color/colorPrimaryDark"
-        android:textColor=""
+        android:textColor="@color/white"
         android:text="Log in"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,5 +1,6 @@
 package tanjore.disastermanagement.tn.tanjore.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,7 +13,7 @@ import tanjore.disastermanagement.tn.tanjore.Objects.IncidentClass;
 import tanjore.disastermanagement.tn.tanjore.IncidentHistoryRecyclerView.IncidentHistoryAdapter;
 import tanjore.disastermanagement.tn.tanjore.R;
 
-public class IncidentHistoryList extends AppCompatActivity {
+public class IncidentHistoryList extends AppCompatActivity implements IncidentHistoryAdapter.IncidentItemClickListener {
 
 
     List<IncidentClass> fakeData = new ArrayList<>();
@@ -24,7 +25,7 @@ public class IncidentHistoryList extends AppCompatActivity {
         //RECYCLER VIEW
         RecyclerView incidentHistory = findViewById(R.id.incident_history_list);
         dummyData();
-        IncidentHistoryAdapter myAdapter = new IncidentHistoryAdapter(fakeData);
+        IncidentHistoryAdapter myAdapter = new IncidentHistoryAdapter(fakeData,this);
         incidentHistory.setAdapter(myAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         incidentHistory.setLayoutManager(layoutManager);
@@ -37,5 +38,11 @@ public class IncidentHistoryList extends AppCompatActivity {
             temp.incidentTime = "Time "+i;
             fakeData.add(temp);
         }
+    }
+
+    // onClickListener for Incident history cardview
+    @Override
+    public void onIncidentItemClick(int view_id, int clickedItemIndex) {
+        startActivity(new Intent(this, IncidentDetails.class));
     }
 }

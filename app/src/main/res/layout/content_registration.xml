@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activities.RegistrationActivity"
+    android:background="@color/colorPrimaryLight"
     tools:showIn="@layout/activity_registration">
 
     <android.support.constraint.Guideline
@@ -40,7 +41,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     
                     android:fontFamily="sans-serif-smallcaps"
                     style="@style/Base.TextAppearance.AppCompat.Display1"
@@ -74,11 +74,11 @@
                     android:id="@+id/textInput_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:hint="@string/name"
-                    android:textColorHint="#717171"
+                    android:textColorHint="@color/hint_txt_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -140,17 +140,41 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:hint="@string/phone_number"
-                    android:textColorHint="#717171"
+                    android:textColorHint="@color/hint_txt_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
                     <EditText
-                        android:id="@+id/editText_phoneNumber"
+                        android:id="@+id/et_phoneNumber"
                         android:layout_width="match_parent"
                         android:fontFamily="monospace"
                         android:layout_height="wrap_content"
                         android:inputType="phone"
+                        android:textColor="#000000" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textInput_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="56dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/password"
+                    android:textColorHint="@color/hint_txt_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInput_phoneNumber">
+
+                    <EditText
+                        android:id="@+id/et_password"
+                        android:layout_width="match_parent"
+                        android:fontFamily="monospace"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
                         android:textColor="#000000" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -166,8 +190,8 @@
                     android:layout_marginTop="16dp"
                     android:baselineAligned="true"
                     android:hint="@string/email"
-                    android:textColorHint="#717171"
-                    app:layout_constraintTop_toBottomOf="@+id/textInput_phoneNumber"
+                    android:textColorHint="@color/hint_txt_color"
+                    app:layout_constraintTop_toBottomOf="@+id/textInput_password"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
 
@@ -190,6 +214,7 @@
                     android:fontFamily="sans-serif-smallcaps"
                     android:text="@string/sign_up"
                     android:textSize="28sp"
+                    android:onClick="onClickSignUp"
 
                     android:layout_marginTop="16dp"
                     android:paddingTop="8dp"

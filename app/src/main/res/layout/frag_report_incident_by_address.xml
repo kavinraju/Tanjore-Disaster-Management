@@ -14,12 +14,13 @@
             android:id="@+id/spinner_district"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@drawable/scrim_gradient_spinner"
+            android:background="@drawable/ripple_rounded_primary_dark"
 
             android:layout_marginTop="36dp"
             android:layout_marginStart="36dp"
             android:layout_marginEnd="36dp"
             app:layout_goneMarginTop="16dp"
+
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +30,7 @@
             android:id="@+id/spinner_taluk"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@drawable/scrim_gradient_spinner"
+            android:background="@drawable/ripple_rounded_primary_dark"
 
             android:layout_marginStart="36dp"
             android:layout_marginEnd="36dp"
@@ -42,13 +43,13 @@
         <android.support.v7.widget.AppCompatSpinner
             android:layout_marginTop="12dp"
             android:id="@+id/spinner_village"
-            android:background="@drawable/scrim_gradient_spinner"
             android:layout_width="match_parent"
             android:layout_height="48dp"
 
             android:layout_marginStart="36dp"
             android:layout_marginEnd="36dp"
             app:layout_goneMarginTop="16dp"
+            android:background="@drawable/ripple_rounded_primary_dark"
 
             app:layout_constraintTop_toBottomOf="@id/spinner_taluk"
             app:layout_constraintStart_toStartOf="@id/spinner_taluk"
@@ -64,7 +65,7 @@
             android:layout_marginTop="16dp"
 
             android:hint="@string/address_1"
-            android:textColorHint="#717171"
+            android:textColorHint="@color/hint_txt_color"
             app:layout_constraintTop_toBottomOf="@id/spinner_village"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -89,7 +90,7 @@
             android:layout_marginTop="16dp"
 
             android:hint="@string/address_2"
-            android:textColorHint="#717171"
+            android:textColorHint="@color/hint_txt_color"
             app:layout_constraintTop_toBottomOf="@id/textInput_address1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -114,7 +115,7 @@
             android:layout_marginTop="16dp"
 
             android:hint="@string/description"
-            android:textColorHint="#717171"
+            android:textColorHint="@color/hint_txt_color"
             app:layout_constraintTop_toBottomOf="@id/textInput_address2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -135,9 +136,13 @@
             android:layout_height="wrap_content"
             android:text="@string/report"
 
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="24dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+
+            android:background="@drawable/ripple_rounded_primary_dark"
 
             app:layout_constraintTop_toBottomOf="@id/textInput_desp"
             app:layout_constraintEnd_toEndOf="parent"

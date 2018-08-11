@@ -45,9 +45,8 @@ public class ReportIncident extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_incident);
         ButterKnife.bind(this);
-//        Toolbar toolbar =  findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        toolbar.setTitle("");
+        Toolbar toolbar =  findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         if (savedInstanceState != null){
 
             mReportIncidentByAddress = (ReportIncidentByAddress) getSupportFragmentManager()
@@ -79,7 +78,6 @@ public class ReportIncident extends AppCompatActivity {
                     .addToBackStack(null)
                     .commit();
             btn_report_by_gps_location.setBackground(getDrawable(R.drawable.ripple_rounded_selected_btn));
-            Toast.makeText(this, "yes", Toast.LENGTH_SHORT).show();
         }else if (currentSelectedOption.equals(REPORT_BY_ADDRESS)){
             fragmentManager.beginTransaction()
                     .replace(R.id.container_for_report_incident, mReportIncidentByAddress, REPORT_BY_ADDRESS)

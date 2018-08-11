@@ -17,17 +17,19 @@
 
         <activity android:name=".Activities.HomeActivity"
                     android:label="Tanjore"
-                    android:theme="@style/NoActionBar">
+                    android:theme="@style/AppTheme">
+
+        </activity>
+        <activity
+            android:name=".Activities.RegistrationActivity"
+            android:label="@string/title_activity_registration"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activities.RegistrationActivity"
-            android:label="@string/title_activity_registration"
-            android:theme="@style/NoActionBar" />
         <activity
             android:name=".ReportIncident"
             android:label="@string/title_activity_report_incident"
@@ -51,12 +53,12 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD734iwMwdjtkddvoswC5fmjTviysnzA2A" />
+            android:value="API_KEY" />
 
         <activity
             android:name=".Activities.IncidentDetails"
             android:label="@string/title_activity_incident_details"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

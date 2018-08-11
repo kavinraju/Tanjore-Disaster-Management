@@ -15,14 +15,22 @@
         android:elevation="0dp"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-       <!-- <android.support.v7.widget.Toolbar
+        <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" >-->
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
 
-        <!--</android.support.v7.widget.Toolbar>-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginEnd="16dp"
+                style="@style/Base.TextAppearance.AppCompat.Large"
+                android:text="@string/title_activity_report_incident"/>
+        </android.support.v7.widget.Toolbar>
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_weight="2"
